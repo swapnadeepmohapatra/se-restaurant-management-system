@@ -44,7 +44,6 @@ const Menu = () => {
       { id: 29, name: "Ice Cream", price: 70 },
     ],
   };
-
   const [quantities, setQuantities] = useState(
     Object.fromEntries(
       Object.keys(menuCategories).flatMap((category) =>
@@ -85,11 +84,9 @@ const Menu = () => {
 
   return (
     <div
-      style={{
-        margin: "20px",
-      }}
+      style={{ margin: "20px", color: "#333", fontFamily: "Arial, sans-serif" }}
     >
-      <h2>Menu</h2>
+      <h2 style={{ color: "#4A90E2" }}>Menu</h2>
       <div
         style={{
           display: "grid",
@@ -99,31 +96,67 @@ const Menu = () => {
       >
         {Object.keys(menuCategories).map((category) => (
           <div key={category} style={{ marginBottom: "20px" }}>
-            <h3>{category}</h3>
+            <h3
+              style={{
+                color: "#4A90E2",
+                borderBottom: "1px solid #E2E6EA",
+                paddingBottom: "5px",
+              }}
+            >
+              {category}
+            </h3>
             <ul style={{ listStyleType: "none", padding: "0" }}>
               {menuCategories[category].map((item) => (
-                <li key={item.id} style={{ margin: "10px 0", display: "flex" }}>
-                  <span
-                    style={{ margin: "0 10px", flex: 1, textAlign: "left" }}
-                  >
-                    {item.name}
-                  </span>
-                  <span
-                    style={{ margin: "0 10px", flex: 1, textAlign: "right" }}
-                  >
+                <li
+                  key={item.id}
+                  style={{
+                    backgroundColor: "#F5F7FA",
+                    border: "1px solid #E2E6EA",
+                    borderRadius: "8px",
+                    padding: "15px",
+                    marginBottom: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  <span style={{ flex: 1 }}>{item.name}</span>
+                  <span style={{ flex: 1, textAlign: "right" }}>
                     ₹{item.price}
                   </span>
-                  <span>
-                    <button onClick={() => updateQuantity(item.id, -1)}>
+                  <div>
+                    <button
+                      onClick={() => updateQuantity(item.id, -1)}
+                      style={{
+                        backgroundColor: "#4A90E2",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "5px",
+                        padding: "5px 10px",
+                        cursor: "pointer",
+                        margin: "0 5px",
+                      }}
+                    >
                       -
                     </button>
-                    <span style={{ margin: "0 10px" }}>
+                    <span style={{ padding: "0 10px" }}>
                       {quantities[item.id]}
                     </span>
-                    <button onClick={() => updateQuantity(item.id, 1)}>
+                    <button
+                      onClick={() => updateQuantity(item.id, 1)}
+                      style={{
+                        backgroundColor: "#4A90E2",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "5px",
+                        padding: "5px 10px",
+                        cursor: "pointer",
+                      }}
+                    >
                       +
                     </button>
-                  </span>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -132,9 +165,21 @@ const Menu = () => {
       </div>
       <button
         onClick={handleOrder}
-        style={{ marginTop: "20px", padding: "10px 20px", fontSize: "16px" }}
+        style={{
+          backgroundColor: "#4A90E2",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          padding: "10px 20px",
+          fontSize: "16px",
+          cursor: "pointer",
+          marginTop: "20px",
+          transition: "background-color 0.3s",
+        }}
+        onMouseOver={(e) => (e.target.style.backgroundColor = "#357ABD")}
+        onMouseOut={(e) => (e.target.style.backgroundColor = "#4A90E2")}
       >
-        Order
+        Place Order
       </button>
     </div>
   );
