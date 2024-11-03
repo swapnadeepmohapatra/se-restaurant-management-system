@@ -30,12 +30,12 @@ const Order = () => {
               <ul style={{ listStyleType: "none", padding: "0" }}>
                 {order.map((item, itemIndex) => (
                   <li key={itemIndex} style={{ margin: "5px 0" }}>
-                    {item.name} (x{item.quantity}) - ${item.total}
+                    {item.name} (x{item.quantity}) - ₹{item.total}
                   </li>
                 ))}
               </ul>
               <h4>
-                Total: ${order.reduce((acc, item) => acc + item.total, 0)}
+                Total: ₹{order.reduce((acc, item) => acc + item.total, 0)}
               </h4>
               <button
                 style={{ marginTop: "10px" }}
